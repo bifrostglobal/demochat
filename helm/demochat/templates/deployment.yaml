@@ -25,5 +25,5 @@ spec:
         - containerPort: {{ .Values.service.internalPort }}
         env:
         - name: MONGO_HELM
-          value: "{{.Release.Name}}-mongo"
+          value: "{{.Release.Name}}-mongodb"
 
