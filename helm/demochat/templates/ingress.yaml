@@ -2,21 +2,13 @@
 {{- $serviceName := .Release.Name -}}
 {{- $servicePort := .Values.service.externalPort -}}
 {{- $path := .Release.Name -}}
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: {{ .Release.Name }}
   labels:
     app: {{ .Release.Name }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
-#    release: "{{ .Release.Name }}"
-#    heritage: "{{ .Release.Service }}"
-#  annotations:
-#      ingress.kubernetes.io/rewrite-target: /
-#  annotations:
-#    {{- range $key, $value := .Values.ingress.annotations }}
-#      {{ $key }}: {{ $value | quote }}
-#    {{- end }}
 spec:
   rules:
     {{- range $host := .Values.ingress.hosts }}
